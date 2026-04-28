@@ -11,15 +11,24 @@
 </head>
 
 <body>
-    <form>
-        <select id="cities">
-            <option value="paris"> Paris 🇫🇷</option>
-            <option value="sydney"> Sydney 🇦🇺</option>
-            <option value="tokyo"> Tokyo 🇯🇵</option>
+        <select id="city">
+            <option value="Europe/Paris"> Paris 🇫🇷</option>
+            <option value="Australia/Sydney"> Sydney 🇦🇺</option>
+            <option value="Asia/Tokyo"> Tokyo 🇯🇵</option>
         </select>
-    </form>
 
-    <script src="src/index.js"></script>
+    <script>
+        function showDate(event) {
+            if (event.target.value.lenth > 0) {
+                let currentTime = moment().tz(event.target.value).format("dddd, MMMM Do, YYYY h:mm: A");
+                
+                alert(`It is ${currentTime} in ${event.target.value}`);
+            }
+        }
+
+        let selectElement = document.querySelector("#city");
+        selectElement.addEventListener("change", showDate);
+    </script>
 </body>
 
 </html>
